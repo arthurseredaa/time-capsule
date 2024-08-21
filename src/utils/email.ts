@@ -1,4 +1,6 @@
 import { createTransport, type Transporter } from "nodemailer";
+import {render} from "@react-email/components";
+import TestTemplate from "@/components/email-templates/test-template";
 
 type SendEmailOptions = {
   to: string;
@@ -11,7 +13,9 @@ export async function sendEmail(options: SendEmailOptions): Promise<Transporter>
   return new Promise(async (resolve, reject) => {
 	const { to, subject, html } = options;
 	const from = import.meta.env.SEND_EMAIL_FROM;
-	const message = { to, subject, html, from: 'no-reply@easyrevenue.org' };
+	const emailHTML = render(TestTemplate({ url: 'https://easyrevenue.org' }))
+
+	const message = { to, subject, html: emailHTML, from };
 	// Send the email
 	transporter.sendMail(message, (err: any, info: any) => {
 	  // Log the error if one occurred
