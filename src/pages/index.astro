@@ -1,12 +1,15 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { Button } from '@/components/ui/button'
+import Layout from '@/layouts/Layout.astro';
+
+import MailForm from '@/components/MailForm'
 
 import '@/styles/globals.css'
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
-		<Button>Test</Button>
+        <h1>Email with Astro + Resend</h1>
+
+        <MailForm client:load />
 	</main>
 </Layout>
