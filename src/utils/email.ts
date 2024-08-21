@@ -13,7 +13,7 @@ export async function sendEmail(options: SendEmailOptions): Promise<Transporter>
   return new Promise(async (resolve, reject) => {
 	const { to, subject, html } = options;
 	const from = import.meta.env.SEND_EMAIL_FROM;
-	const emailHTML = render(TestTemplate({ url: 'https://easyrevenue.org' }))
+	const emailHTML = render(TestTemplate({ url: 'https://easyrevenue.org', html }))
 
 	const message = { to, subject, html: emailHTML, from };
 	// Send the email
