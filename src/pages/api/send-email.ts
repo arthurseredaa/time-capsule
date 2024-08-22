@@ -12,18 +12,20 @@ export const POST: APIRoute = async ({ request, redirect }) => {
 
   // Throw an error if we're missing any of the needed fields.
   if (!to || !subject || !message) {
-	throw new Error("Missing required fields");
+    throw new Error("Missing required fields");
   }
 
   // Try to send the email using a `sendEmail` function we'll create next. Throw
   // an error if it fails.
   try {
-	await sendEmail({ to, subject, html: message });
+    await sendEmail({ to, subject, html: message });
   } catch (error) {
-	throw new Error("Failed to send email");
+    throw new Error("Failed to send email");
   }
 
-  return new Response(JSON.stringify({
-	success: true
-  }))
+  return new Response(
+    JSON.stringify({
+      success: true,
+    }),
+  );
 };

@@ -6,10 +6,9 @@ import MailForm from '@/components/MailForm'
 import '@/styles/globals.css'
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-        <h1>Email with Astro + Resend</h1>
+<Layout title="Time capsule">
+	<h1>Email with Astro + Resend</h1>
 
-        <MailForm client:load />
-	</main>
+	<MailForm client:load />
+	<a href="/success">Go to success page</a>
 </Layout>
